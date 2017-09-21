@@ -12,7 +12,7 @@ public class AudioScript : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
         GameObject[] audioObjs = GameObject.FindGameObjectsWithTag ("Audio");
         if(audioObjs.Length > 1){
-            for(int i = 1; i < audioObjs.Length; i++){
+            for(int i = 0; i < audioObjs.Length - 1; i++){
                 Destroy (audioObjs[i]);
             }
 
