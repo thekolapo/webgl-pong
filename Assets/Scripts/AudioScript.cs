@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class AudioScript : MonoBehaviour {
     public static AudioScript main;
-    private AudioSource audioSource;
+    private static AudioSource audioSource;
     
     void Awake(){
         DontDestroyOnLoad(gameObject);
         main = this;
-        audioSource = GetComponent<AudioSource>();
+
+        if(!audioSource){
+             audioSource = GetComponent<AudioSource>();
+        }
+
         GameObject[] audioObjs = GameObject.FindGameObjectsWithTag ("Audio");
+
         if(audioObjs.Length > 1){
             for(int i = 0; i < audioObjs.Length - 1; i++){
-                Destroy (audioObjs[i]);
+                Destroy (audioObjs[1]);
             }
 
         }
+        
         StartCoroutine(WaitFor(audioSource.clip.length + 2));
     }
 
