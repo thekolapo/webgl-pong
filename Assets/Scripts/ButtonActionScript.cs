@@ -11,10 +11,12 @@ public class ButtonActionScript : MonoBehaviour {
 	public Texture2D cursorTexture;
 	private bool pause;
 	public GameObject audioObjOn, audioObjOff;
+	public GameObject leftInstructionText;
 
 	// Use this for initialization
 	void Start () {
 		pause = false;
+		leftInstructionText.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -53,6 +55,7 @@ public class ButtonActionScript : MonoBehaviour {
 		GameObject.Find("Right Racket").GetComponent<RacketControllerScript>().isAI = false;
 
 		if(mode.Equals("Two Players")){
+			leftInstructionText.SetActive(true);
 			SceneManagementScript.main.twoPlayerMode = true;
 			GameObject.Find("Left Racket").GetComponent<RacketControllerScript>().isAI = false;
 		}
