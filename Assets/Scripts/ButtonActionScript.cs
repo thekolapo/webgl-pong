@@ -72,12 +72,12 @@ public class ButtonActionScript : MonoBehaviour {
     	Application.OpenURL("http://twitter.com/intent/tweet" + "?text=" + WWW.EscapeURL(text + "\n") +"&amp;url=" + WWW.EscapeURL(url) +"&amp;lang=" + WWW.EscapeURL("en"));
 	}
 
-	public void ViewDevelopersTwitterProfile(){
-		Application.OpenURL("http://twitter.com/kolapo_"); 
+	public void ViewCreatorsTwitterProfile(string name){
+		Application.OpenURL("http://twitter.com/" + name);
 	}
 
 	public void ViewCodeOnGithub(){
-		Application.OpenURL("https://github.com/thekolapo"); 
+		Application.OpenURL("https://github.com/thekolapo/webgl-pong"); 
 	}
 
 	public void PauseOrPlay(){

@@ -5,6 +5,8 @@ using UnityEngine;
 public class AudioScript : MonoBehaviour {
     public static AudioScript main;
     private static AudioSource audioSource;
+    [HideInInspector]
+    public float volume;
     
     void Awake(){
         DontDestroyOnLoad(gameObject);
@@ -22,6 +24,8 @@ public class AudioScript : MonoBehaviour {
             }
 
         }
+
+        volume = audioSource.volume;
         
         StartCoroutine(WaitFor(audioSource.clip.length + 2));
     }
@@ -34,6 +38,7 @@ public class AudioScript : MonoBehaviour {
 
     public void ToggleAudio(){
         audioSource.volume = (audioSource.volume == 0)? 0.2f : 0;
+        volume = audioSource.volume;
     }
 
 }

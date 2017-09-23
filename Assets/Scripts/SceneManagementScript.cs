@@ -13,7 +13,9 @@ public class SceneManagementScript : MonoBehaviour {
 	public bool isMainMenu;
 	public GameObject scorePanel;
 	public TextMeshProUGUI winText;
+	[HideInInspector]
 	public bool twoPlayerMode;
+	public Transform audioButton;
 
 	void Awake(){
 		main = this;
@@ -29,6 +31,18 @@ public class SceneManagementScript : MonoBehaviour {
 	void Start () {
 		isMainMenu = true;
 		twoPlayerMode = false;
+
+		audioButton.GetChild(0).gameObject.SetActive(false);
+		audioButton.GetChild(1).gameObject.SetActive(false);
+
+		if(AudioScript.main.volume == 0){
+			audioButton.GetChild(1).gameObject.SetActive(true);
+
+			return;
+		}
+
+		audioButton.GetChild(0).gameObject.SetActive(true);
+
 	}
 
 	public void DeclareWinner(string winner){
